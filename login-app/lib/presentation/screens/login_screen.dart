@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:loginapp/config/themes/app_theme.dart';
+import 'package:loginapp/presentation/screens/home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
+  final String name = "Login";
+
   var logged = false;
   LoginScreen({super.key, this.logged = false});
 
@@ -94,12 +97,12 @@ class LoginScreen extends StatelessWidget {
                         final valueUsername = usernameController.text;
                         final valuePassUsername = passwordController.text;
                       
-                        if (valueUsername.trim().toUpperCase() == 'PABLO'.toUpperCase() && valuePassUsername.trim().toUpperCase() == '12345'.toUpperCase()) 
+                        if (valueUsername.trim().toUpperCase() == 'Pablo'.toUpperCase() && valuePassUsername.trim().toUpperCase() == '12345'.toUpperCase()) 
                         {
+                          logged = true;
+                          context.goNamed(HomeScreen().name, pathParameters: {'username' : valueUsername, 'passUsername' : valuePassUsername});
                           usernameController.clear();
                           passwordController.clear();
-                          logged = true;
-                          context.push('/home');
                         } else {
                           showDialog(    
                             context: context,

@@ -3,7 +3,10 @@ import 'package:go_router/go_router.dart';
 import 'package:loginapp/config/themes/app_theme.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final String name = "Home";
+  final String? username;
+  final String? passUsername;
+  HomeScreen({super.key, String? this.username = "Sin nombre", String? this.passUsername = "Sin clave", });
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +42,7 @@ class HomeScreen extends StatelessWidget {
                           child: const Text("Sí"),
                           onPressed: () {
                             context.push('/');
+                            Navigator.of(context).pop();
                           },
                         ),
                       ],
@@ -106,64 +110,16 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const SizedBox(
                     height: 30,
-                  ),   
-                  Row(
+                  ),  
+                   Row(
                     children: [
-                      Text('Curso: 2º DAM',
+                      Text('Usuario: $username Contraseña: $passUsername',
                       style: TextStyle(
                         fontSize: screenWidth * 0.02
                       ),
                       )
                     ],
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),   
-                  Row(
-                    children: [
-                      Text('Telefono: 633222111',
-                      style: TextStyle(
-                        fontSize: screenWidth * 0.02
-                      ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),   
-                  Row(
-                    children: [
-                      Text('Correo: pmargue0511@g.educaand.es',
-                      style: TextStyle(
-                        fontSize: screenWidth * 0.02
-                      ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),   
-                  Row(
-                    children: [
-                      Text('Edad: 18',
-                      style: TextStyle(
-                        fontSize: screenWidth * 0.02
-                      ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),   
-                  Row(
-                    children: [
-                      Text('Fecha de nacimiento: 04/11/2005',
-                      style: TextStyle(
-                        fontSize: screenWidth * 0.02
-                      ),
-                      )
-                    ],
-                  )
+                  ), 
                 ],
               ),
             ),
